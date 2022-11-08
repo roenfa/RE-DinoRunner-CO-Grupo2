@@ -27,6 +27,8 @@ class Game:
         pygame.quit()
 
     def events(self):
+        user_input = pygame.key.get_pressed()
+        self.player.event(user_input)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
