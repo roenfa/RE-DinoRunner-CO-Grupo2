@@ -26,6 +26,9 @@ class Dinosaur(Sprite):
         self.dino_jump = False
         self.dino_duck = False
         self.jump_vel = self.JUMP_VEL
+        self.time_up = 0
+
+        self.has_lives = True
 
     # Agregar el evento de agacharse para el dino -> pygame.K_DOWN
     def event(self, user_input):
