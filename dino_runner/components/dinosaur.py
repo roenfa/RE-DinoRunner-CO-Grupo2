@@ -23,6 +23,7 @@ class Dinosaur(Sprite):
         self.dino_jump = False
         self.jump_vel = self.JUMP_VEL
 
+    # Agregar el evento de agacharse para el dino -> pygame.K_DOWN
     def event(self, user_input):
         if user_input[pygame.K_UP] and not self.dino_jump:
             self.dino_run = False
