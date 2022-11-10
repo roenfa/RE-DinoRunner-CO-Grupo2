@@ -2,13 +2,14 @@ import pygame
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.player_hearts.player_heart_manager import PlayerHeartManager
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, IMG_BACKGROUND
 from dino_runner.components.dinosaur import Dinosaur
 
 from dino_runner.components import text_utils
 
 class Game:
     def __init__(self):
+        
         pygame.init()
         pygame.display.set_caption(TITLE)
         pygame.display.set_icon(ICON)
@@ -19,11 +20,9 @@ class Game:
         self.x_pos_bg = 0
         self.y_pos_bg = 380
         self.points = 0
-
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.player_heart_manager = PlayerHeartManager()
-
     def run(self):
         # Game loop: events - update - draw
         self.playing = True
@@ -77,3 +76,4 @@ class Game:
         # imprimimos el texto que contiene el score
         text, text_rect = text_utils.get_score_element(self.points)
         self.screen.blit(text, text_rect)
+

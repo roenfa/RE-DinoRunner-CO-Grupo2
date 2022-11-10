@@ -13,6 +13,8 @@ class Dinosaur(Sprite):
         self.jump_img = {DEFAULT_TYPE: JUMPING}
         self.duck_img = {DEFAULT_TYPE: DUCKING}
 
+        self.sound_jump = pygame.mixer.Sound("dino_runner/components/salto.mp3")
+
         self.type = DEFAULT_TYPE
         self.image = self.run_img[self.type][0]
         self.dino_rect = self.image.get_rect()
@@ -30,22 +32,22 @@ class Dinosaur(Sprite):
 
         self.has_lives = True
 
-    # Agregar el evento de agacharse para el dino -> pygame.K_DOWN
+
     def event(self, user_input):
         if (user_input[pygame.K_UP] or user_input[pygame.K_SPACE]) and not self.dino_jump:
             self.dino_run = False
             self.dino_jump = True
+            self.sound_jump.play()
         elif user_input[pygame.K_DOWN] and not self.dino_duck:
             self.dino_run = False
             self.dino_jump = False
             self.dino_duck = True
-        elif not self.dino_jump:
+        elif not (self.dino_jump or user_input[pygame.K_DOWN]):
             self.dino_run = True
             self.dino_jump = False
             self.dino_duck = False
 
     def update(self):
-        # self.run()
         if self.dino_jump:
             self.jump()
         if self.dino_run:
