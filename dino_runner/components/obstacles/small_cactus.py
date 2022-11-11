@@ -9,3 +9,5 @@ class SmallCactus(Cactus):
         self.image = SMALL_CACTUS[self.type]
         self.rect.y = 325
         super().__init__(image, self.type)
+
+    

@@ -17,3 +17,7 @@ class PlayerHeartManager:
     def reduce_heart(self):
         self.heart_count -= 1
         self.restHearth.play()
+    
+    def reset_hearts(self):
+        self.heart_count = HEART_COUNT
+
